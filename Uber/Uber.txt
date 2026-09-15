@@ -1,0 +1,83 @@
+ALGORITMO Uber
+
+VAR
+    TAXA_BASE : REAL = 5.00
+    PRECO_POR_KM : REAL = 2.50
+    MULTIPLICADOR_PICO : REAL = 1.40
+
+PROCEDIMENTO calcular_corrida(VAR valor_final : REAL, VAR subtotal : REAL, VAR pico : CARACTERE)
+VAR
+    distancia : REAL
+    valido : LOGICO = FALSO
+INICIO
+    LIMPAR_TELA()
+    ESCREVA "---------- Simular Corrida ----------"
+
+    ENQUANTO NAO valido FACA
+        ESCREVA "Distância percorrida (Km): "
+        LEIA distancia
+
+        SE distancia <= 0 ENTAO
+            ESCREVA "A distância deve ser maior que zero!"
+        SENAO
+            ESCREVA "A corrida é em horário de pico?"
+            ESCREVA "Digite 'S' para Sim ou 'N' para Não: "
+            LEIA pico
+            pico = CONVERTER_PARA_MAIUSCULO(pico)
+
+            SE pico != "S" E pico != "N" ENTAO
+                ESCREVA "Opção inválida para o horário de pico! Tente novamente..."
+            SENAO
+                subtotal = TAXA_BASE + (distancia * PRECO_POR_KM)
+
+                SE pico == "S" ENTAO
+                    valor_final = subtotal * MULTIPLICADOR_PICO
+                SENAO
+                    valor_final = subtotal
+                FIM_SE
+                valido = VERDADEIRO
+            FIM_SE
+        FIM_SE
+    FIM_ENQUANTO
+FIM_PROCEDIMENTO
+
+INICIO
+    VAR opcao, pausa, pico_resposta : CARACTERE
+    VAR valor_total, sub_total : REAL
+
+    ENQUANTO verdadeiro FACA
+        LIMPAR_TELA()
+        ESCREVA "---------- App de Corridas ----------"
+        ESCREVA "1 | Calcular Valor da Corrida"
+        ESCREVA "0 | Sair"
+        ESCREVA "Escolha: "
+        LEIA opcao
+
+        ESCOLHA opcao
+            CASO "1":
+                CHAMAR calcular_corrida(valor_total, sub_total, pico_resposta)
+                
+                LIMPAR_TELA()
+                ESCREVA "---------- Resumo da Corrida ----------"
+                ESCREVA "Taxa base fixada: R$ 5.00"
+                
+                SE pico_resposta == "S" ENTAO
+                    ESCREVA "Horário de pico: SIM (+40% de tarifa dinâmica)"
+                SENAO
+                    ESCREVA "Horário de pico: NÃO (Tarifa normal)"
+                FIM_SE
+
+                ESCREVA "Valor Total da Corrida: R$ ", valor_total
+                ESCREVA "Pressione ENTER para voltar ao menu..."
+                LEIA pausa
+
+            CASO "0":
+                LIMPAR_TELA()
+                PARAR
+
+            OUTRO CASO:
+                ESCREVA "Caractere inválido, pressione ENTER e tente novamente"
+                LEIA pausa
+        FIM_ESCOLHA
+    FIM_ENQUANTO
+FIM_ALGORITMO

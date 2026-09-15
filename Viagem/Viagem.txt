@@ -1,0 +1,73 @@
+ALGORITMO Viagem
+
+FUNCAO custo() : REAL
+VAR
+    distancia, consumo_veiculo, preco : REAL
+INICIO
+    ENQUANTO verdadeiro FACA
+        ESCREVA "Distância (Km): "
+        LEIA distancia
+        ESCREVA "Consumo (Km/L): "
+        LEIA consumo_veiculo
+        ESCREVA "Preço por Litro (R$): "
+        LEIA preco
+        
+        // Validação simples de dados
+        SE consumo_veiculo > 0 ENTAO
+            RETORNE (distancia / consumo_veiculo) * preco
+        SENAO
+            ESCREVA "Entrada inválida! Tente novamente."
+        FIM_SE
+    FIM_ENQUANTO
+FIM_FUNCAO
+
+FUNCAO consumo() : REAL
+VAR
+    km, litro : REAL
+INICIO
+    ENQUANTO verdadeiro FACA
+        ESCREVA "Quilometragem percorrida (Km): "
+        LEIA km
+        ESCREVA "Litros consumidos em ", km, " Km: "
+        LEIA litro
+        
+        SE litro > 0 ENTAO
+            RETORNE km / litro
+        SENAO SE litro == 0 ENTAO
+            ESCREVA "Os litros não podem ser zero! Tente novamente..."
+        SENAO
+            ESCREVA "Entrada inválida! Tente novamente..."
+        FIM_SE
+    FIM_ENQUANTO
+FIM_FUNCAO
+
+INICIO
+    VAR opcao : CARACTERE
+    VAR continuacao : CARACTERE
+
+    ENQUANTO verdadeiro FACA
+        LIMPAR_TELA()
+        ESCREVA "---------- Planejamento de Viagem ----------"
+        ESCREVA "1 | Simular Gasto"
+        ESCREVA "2 | Calcular Consumo"
+        ESCREVA "0 | Sair"
+        LEIA opcao
+
+        ESCOLHA opcao
+            CASO "1":
+                ESCREVA "O seu Custo Total foi de: R$ ", custo()
+                ESCREVA "Pressione ENTER para voltar ao menu..."
+                LEIA continuacao
+            CASO "2":
+                ESCREVA "O seu Consumo foi de: ", consumo(), " Km/L"
+                ESCREVA "Pressione ENTER para voltar ao menu..."
+                LEIA continuacao
+            CASO "0":
+                LIMPAR_TELA()
+                PARAR
+            OUTRO CASO:
+                ESCREVA "Caractere inválido, pressione ENTER e tente novamente"
+                LEIA continuacao
+        FIM_ESCOLHA
+    FIM_ENQUANTO
+FIM_ALGORITMO
