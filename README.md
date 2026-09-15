@@ -38,9 +38,9 @@ $$\text{Valor Final} = \begin{cases} \text{Subtotal} \times 1.40 & \text{se Hor�
 ## 🧪 Teste de Mesa
 
 ### **Situação A (Custo de Viagem)**
-**Caso****Distância (km)****Consumo (km/L)****Preço/L (R$)****Cálculo****Saída (R$ Total)**Teste 1100.010.05.50$(100 / 10) \times 5.50$**R$ 55.00**Teste 2250.012.56.00$(250 / 12.5) \times 6.00$**R$ 120.00**
+**Caso** **Distância (km)** **Consumo (km/L)** **Preço/L (R$)** **Cálculo** **Saída (R$ Total)**Teste 1100.010.05.50$(100 / 10) \times 5.50$**R$ 55.00**Teste 2250.012.56.00$(250 / 12.5) \times 6.00$**R$ 120.00**
 ### **Situação B (Corrida por App)**
-**Caso****Distância (km)****Horário de Pico****Subtotal (5.00+(km×2.50))****Multiplicador****Saída (R$ Final)**Teste 110.0Não (N)$5.00 + (10 \times 2.50) = 30.00$$1.00$**R$ 30.00**Teste 210.0Sim (S)$5.00 + (10 \times 2.50) = 30.00$$1.40$**R$ 42.00**
+**Caso** **Distância (km)** **Horário de Pico** **Subtotal (5.00+(km×2.50))** **Multiplicador** **Saída (R$ Final)**Teste 110.0Não (N)$5.00 + (10 \times 2.50) = 30.00$$1.00$**R$ 30.00**Teste 210.0Sim (S)$5.00 + (10 \times 2.50) = 30.00$$1.40$**R$ 42.00**
 ## 📁 Estrutura de Arquivos
 Plaintext
 
